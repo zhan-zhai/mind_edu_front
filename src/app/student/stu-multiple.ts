@@ -1,0 +1,23 @@
+export class StuMultiple {
+  title: string;
+  optionA: string;
+  optionB: string;
+  optionC: string;
+  optionD: string;
+  answer: string;
+
+  submitted: boolean;
+  confirmed: boolean;
+
+  constructor() {
+    this.title = '';
+    this.optionA = '';
+    this.optionB = '';
+    this.optionC = '';
+    this.optionD = '';
+    this.answer = '';
+
+    this.submitted = false;
+    this.confirmed = false;
+  }
+}

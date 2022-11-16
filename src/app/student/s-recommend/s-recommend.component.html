@@ -1,0 +1,48 @@
+<nz-collapse id="recommend-nz-collapse">
+  <!--单选题面板-->
+  <nz-collapse-panel
+          [nzHeader]="'选择题'"
+          [nzActive]="true"
+          [nzDisabled]="false">
+
+    <!--单选题列表-->
+    <ol>
+      <li *ngFor="let stuMultiple of stuMultiples" class="multiple">
+        <form>
+          <!--          <div class="title item"><b>{{stuMultiple.title}}</b></div>-->
+          <div class="title item" [innerHTML]="stuMultiple.title"></div>
+          <div class="options item">
+            <div>
+              <span>A. </span><span class="optionA"> {{stuMultiple.optionA}}</span>
+            </div>
+            <div>
+              <span>B. </span><span class="optionB"> {{stuMultiple.optionB}}</span>
+            </div>
+            <div>
+              <span>C. </span><span class="optionC"> {{stuMultiple.optionC}}</span>
+            </div>
+            <div>
+              <span>D. </span><span class="optionD"> {{stuMultiple.optionD}}</span>
+            </div>
+          </div>
+
+          <nz-radio-group [(ngModel)]="stuMultiple.answer" name="stuAnswer">
+            <label nz-radio nzValue="A">A</label>
+            <label nz-radio nzValue="B">B</label>
+            <label nz-radio nzValue="C">C</label>
+            <label nz-radio nzValue="D">D</label>
+          </nz-radio-group>
+          <button nz-button *ngIf="!stuMultiple.confirmed" (click)="submitMultiple(stuMultiple)" [disabled]="!stuMultiple.answer || stuMultiple.answer==''">提交回答</button>
+          <button nz-button *ngIf="stuMultiple.submitted && !stuMultiple.confirmed" (click)="stuMultiple.confirmed = true" type="submit">确认提交</button>
+          <button nz-button *ngIf="stuMultiple.confirmed" (click)="checkAnswer(stuMultiple['assignmentLongId'], 1)">查看答案</button>
+        </form>
+
+        <!--分割线-->
+        <nz-divider></nz-divider>
+      </li>
+    </ol>
+
+
+  </nz-collapse-panel>
+
+</nz-collapse>

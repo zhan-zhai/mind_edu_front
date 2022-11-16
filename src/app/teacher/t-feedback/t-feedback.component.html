@@ -1,0 +1,14 @@
+
+<div *ngIf="feedback_list.length > 0">
+  <h2 style="margin-bottom: 24px">反馈信息</h2>
+    <div *ngFor="let feedback of feedback_list" class="feedback">
+      <div>题目：{{feedback.question_title}}</div>
+      <div>反馈：{{feedback.info}}</div>
+    </div>
+
+
+
+</div>
+<div *ngIf="feedback_list.length == 0">
+  暂无反馈信息
+</div>
